@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            background: #000000;
+        }
+        .countDownContainer{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translateX(-50%) translateY(-50%);
+            text-align: center;
+            background: #ddd;
+            border: 1px solid #999;
+            padding: 10px;
+            box-shadow: 0 0 5px 3px #ccc;
+        }
+        .info{
+            font-size: 50px;
+        }
+        .infoMini{
+            
+        }
+        .twitterFeedContainer{
+            position:absolute;
+            top: 20%;
+            left: 2%;
+            transform: translateX(5%) translateY(5%);
+            width: 700px;
+            height: 800px;
+            text-align: left;
+            background: #ddd;
+            border: 1px solid #999;
+            padding: 5px;
+            box-shadow: 0 0 5px 3px #ccc;
+        }
+        #naviVideo{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            filter:opacity(50%);
+        }
+        #logo{
+            position: relative;;
+            float:left;
+            width:8%;
+            height:auto;
+        }
+        .imgLinks{
+            position: relative;            
+            width:auto;
+            height:auto;
+            float: right;   
+            display: block;           
+        }
+        .imgLinks img{
+            padding:0 90px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="naviVideo">
+        <source src="naviytvideo.mp4" type="video/mp4">
+    </video>
+
+    <img id="logo" src="navilogo.png" alt="navilogo">
+
+    <div class="imgLinks">
+        <a href="https://www.youtube.com/channel/UCL9lr2foHrmZg2A3MOng4bQ" target"_blank"><img src="yt.png" alt="youtube"></a>
+        <a href="https://twitter.com/sunday__yellow" target"_blank"><img src="tw.png" alt="twitter"></a>
+        <a href="https://www.instagram.com/sunday__yellow/" target"_blank"><img src="ig.png" alt="instagram"></a>
+        <a href="https://soundcloud.com/navi-173122891" target"_blank"><img src="sc.png" alt="sound cloud"></a>
+    </div>
+
+    <div class="twitterFeedContainer">
+        <iframe frameborder="0" width="100%" height="100%" background:yellow; src="http://sundayyellow.tweetwally.com/embed" target="_blank" align="center" scrolling="Auto"></iframe>
+    </div>
+
+    <table class="countDownContainer">
+        <tr class="info">
+            <td colspan="4">RADIO APPEARANCE</td>                    
+        </tr> 
+       
+        <tr class="info">
+            <td id="days">120</td>
+            <td id="hours">4</td>
+            <td id="minutes">12</td>
+            <td id="seconds">22</td>
+        </tr>
+        <tr>
+            <td>Days</td>
+            <td>Hours</td>
+            <td>Minutes</td>
+            <td>Seconds</td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        function countdown(){
+            let now = new Date();
+            let eventDate = new Date(2018, 6, 31);
+            
+            let currentTime = now.getTime();
+            let eventTime = eventDate.getTime();
+
+            let remTime = eventTime - currentTime;
+
+            let s = Math.floor(remTime / 1000);
+            let m = Math.floor(s / 60);
+            let h = Math.floor(m / 60);
+            let d = Math.floor(h / 24);
+
+            h %= 24;
+            m %= 60;
+            s %= 60;
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            document.getElementById("days").textContent = d;
+            document.getElementById("hours").textContent = h;
+            document.getElementById("minutes").textContent = m;
+            document.getElementById("seconds").textContent = s;
+
+            setTimeout(countdown, 1000);
+        }
+        countdown();
+    </script>
+</body>
+</html>
